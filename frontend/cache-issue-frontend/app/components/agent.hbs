@@ -1,0 +1,24 @@
+<div style="" ...attributes>
+  <p>
+    <strong>{{or @agent.name "This agent has no name, it is the base class"}}</strong>
+    Model name: <em>{{@agent.constructor.modelName}}</em>
+  </p>
+  <div style="display: block;">
+    {{#let (unique-id) as |id|}}
+      <label for={{id}}>
+        New job name:
+        <Input id={{id}} @type="text" @value={{this.name}} />
+      </label>
+    {{/let}}
+    <button type="button" {{on "click" this.createJob}}>
+      Create job
+    </button>
+  </div>
+  <div style="display: block;">
+    {{#if @agent.job}}
+      <p>{{@agent.job.name}} <em>{{@agent.job.created}}</em></p>
+    {{else}}
+      <p>This agent has no job.</p>
+    {{/if}}
+  </div>
+</div>

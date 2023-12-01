@@ -1,0 +1,9 @@
+{{page-title "Application"}}
+
+<h1>Agents</h1>
+
+{{#each this.model as |agent|}}
+  <Agent @agent={{agent}} style="padding: 10px; margin-bottom: 20px; border: solid;"/>
+{{/each}}
+
+{{outlet}}
