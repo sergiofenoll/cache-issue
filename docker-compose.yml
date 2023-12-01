@@ -14,6 +14,15 @@ services:
     volumes:
       - ./config/dispatcher:/config
   database:
+    image: semtech/mu-authorization:0.6.0-beta.8
+    environment:
+      MU_SPARQL_ENDPOINT: "http://triplestore:8890/sparql"
+      LOG_INCOMING_SPARQL_QUERIES: "true"
+      LOG_OUTGOING_SPARQL_QUERIES: "true"
+      LOG_OUTGOING_SPARQL_QUERY_ROUNDTRIP: "true"
+    volumes:
+      - ./config/authorization:/config
+  triplestore:
     image: redpencil/virtuoso:1.2.0-rc.1
     environment:
       SPARQL_UPDATE: "true"
@@ -21,9 +30,22 @@ services:
     volumes:
       - ./data/db:/data
       - ./config/virtuoso/virtuoso.ini:/data/virtuoso.ini
+  delta-notifier:
+    image: semtech/mu-delta-notifier:0.2.0
+    volumes:
+      - ./config/delta:/config
   resource:
     image: semtech/mu-cl-resources:1.22.2
     links:
       - database:database
+    environment:
+      CACHE_CLEAR_PATH: "http://cache/.mu/clear-keys"
     volumes:
       - ./config/resources:/config
+  cache:
+    image: semtech/mu-cache:2.0.2
+    environment:
+      LOG_CACHE_KEYS: "true"
+      LOG_CLEAR_KEYS: "true"
+    links:
+      - resource:backend

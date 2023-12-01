@@ -5,5 +5,7 @@
 (setf sparql:*experimental-no-application-graph-for-sudo-select-queries* t)
 (setf *cache-model-properties-p* t)
 
+(defparameter *supply-cache-headers-p* t)
+
 ;; reading in the domain.json
 (read-domain-file "domain.json")

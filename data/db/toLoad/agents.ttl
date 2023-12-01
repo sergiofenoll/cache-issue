@@ -1,0 +1,13 @@
+<http://mu.semte.ch/data/ext/Agent/218ab478-93d4-4603-bae5-a2da4f500628>
+  a <http://mu.semte.ch/vocabularies/ext/Agent> ;
+  <http://mu.semte.ch/vocabularies/core/uuid> "218ab478-93d4-4603-bae5-a2da4f500628" .
+
+<http://mu.semte.ch/data/ext/Person/62c58f47-f858-4256-937e-f16be9370ae3>
+  a <http://mu.semte.ch/vocabularies/ext/Person>, <http://mu.semte.ch/vocabularies/ext/Agent> ;
+  <http://mu.semte.ch/vocabularies/core/uuid> "62c58f47-f858-4256-937e-f16be9370ae3" ;
+  <http://mu.semte.ch/vocabularies/ext/personName> "Spider-Man" .
+
+<http://mu.semte.ch/data/ext/Daemon/6c8b66ec-0d4b-4177-a703-0d71592ab9c9>
+  a <http://mu.semte.ch/vocabularies/ext/Daemon>, <http://mu.semte.ch/vocabularies/ext/Agent> ;
+  <http://mu.semte.ch/vocabularies/core/uuid> "6c8b66ec-0d4b-4177-a703-0d71592ab9c9" ;
+  <http://mu.semte.ch/vocabularies/ext/daemonName> "Living Brain" .

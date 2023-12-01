@@ -1,7 +1,71 @@
 {
   "version": "0.1",
   "prefixes": {
+    "ext": "http://mu.semte.ch/vocabularies/ext/"
   },
   "resources": {
+    "agents": {
+      "name": "agent",
+      "class": "ext:Agent",
+      "features": ["include-uri"],
+      "new-resource-base": "http://mu.semte.ch/data/ext/Agent/",
+      "relationships": {
+        "job": {
+          "predicate": "ext:creator",
+          "target": "job",
+          "cardinality": "one",
+          "inverse": true
+        }
+      }
+    },
+    "people": {
+      "name": "person",
+      "class": "ext:Person",
+      "super": ["agent"],
+      "features": ["include-uri"],
+      "new-resource-base": "http://mu.semte.ch/data/ext/Person/",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "ext:personName"
+        }
+      }
+    },
+    "daemons": {
+      "name": "daemon",
+      "class": "ext:Daemon",
+      "super": ["agent"],
+      "features": ["include-uri"],
+      "new-resource-base": "http://mu.semte.ch/data/ext/Daemon/",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "ext:daemonName"
+        }
+      }
+    },
+    "jobs": {
+      "name": "job",
+      "class": "ext:Job",
+      "features": ["include-uri"],
+      "new-resource-base": "http://mu.semte.ch/data/ext/Job/",
+      "attributes": {
+        "name": {
+          "type": "string",
+          "predicate": "ext:name"
+        },
+        "created": {
+          "type": "datetime",
+          "predicate": "ext:created"
+        }
+      },
+      "relationships": {
+        "creator": {
+          "predicate": "ext:creator",
+          "target": "agent",
+          "cardinality": "one"
+        }
+      }
+    }
   }
 }
